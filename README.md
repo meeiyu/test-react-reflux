@@ -1,2 +1,3 @@
 # test-react-reflux
-reflux
+Test reflux.
+Todo List.
