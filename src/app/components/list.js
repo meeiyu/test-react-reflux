@@ -40,11 +40,9 @@ List = React.createClass({
     },
     render: function() {
         var tags;
-
         if (this.state.data) {
             tags = this._renderTags(this.state.data);
         }
-
         return (
             /*jshint ignore:start */
                 <ul>
