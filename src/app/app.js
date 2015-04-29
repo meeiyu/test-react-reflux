@@ -10,38 +10,20 @@ var React  = require('react'),
     ExampleApp;
 
 ExampleApp = React.createClass({
-    mixins:[Reflux.ListenerMixin],
-    getInitialState: function () {
-        return {
-            data:''
-        };
-    },
+    mixins:[Reflux.ListenerMixin],   //Reflux.ListenerMixin 會幫我們 unsubscribe
     componentWillMount: function(){
         // this._status();
     },
     componentDidMount: function() {
         // this._status();
-        this._init();
-        
-        
         // this.listenTo(Store, this._add);
-    },
-    _init:function(){
-         Action.getList();
-         this.listenTo(Store, function(data){
-            this.setState({
-                data:data
-            });
-        });
     },
     _add: function() {
         var val = this.refs.inputVal.getDOMNode().value;
         Action.updateList(val);
     },
     _status: function() {
-        
         console.log('current data:', data);
-        
     },
     render: function() {
         return (
@@ -49,11 +31,10 @@ ExampleApp = React.createClass({
             <div className="container">
                 <h2>Todo List</h2>
                 <input type="text" ref="inputVal"></input>
+                    <List />
                 <p>
                     <button className="btn btn-info" type="button" onClick={this._add}>New Task</button>
-                    {this.state.data}
                 </p>
-                <List />
                 <footer>
                     <p>&copy; Mandy 2015</p>
                 </footer>
